@@ -94,7 +94,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /payment
+        value: /payments
     backendRefs:
     - name: payment-service
       port: 3009
