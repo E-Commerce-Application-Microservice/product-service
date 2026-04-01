@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: clahanstore-config
+  namespace: clahanstore
+data:
+  MONGO_URI_PRODUCT: mongodb://mongodb:27017/productdb
+  PRODUCT_SERVICE_URL: http://product-service:3003
