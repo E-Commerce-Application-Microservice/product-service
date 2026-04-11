@@ -107,6 +107,6 @@ jobs:
         uses: snyk/actions/setup@master
  
       - name: Snyk Monitor
-        run: snyk monitor --all-files
+        run: snyk monitor --all-projects
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
