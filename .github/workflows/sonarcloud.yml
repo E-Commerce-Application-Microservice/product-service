@@ -87,5 +87,5 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
       - name: Run Snyk test
-        run: snyk test --all-projects || true
+        run: snyk test --all-projects
 
