@@ -110,6 +110,6 @@ jobs:
         run: npm install
  
       - name: Snyk Monitor
-        run: snyk monitor --all-projects
+        run: snyk monitor --file=package.json
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
