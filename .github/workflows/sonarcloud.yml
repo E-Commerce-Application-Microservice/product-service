@@ -41,14 +41,14 @@ permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
 
 jobs:
-  Analysis:
+  Sonarqube:
     runs-on: ubuntu-latest
 
     steps:
 
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
@@ -71,3 +71,21 @@ jobs:
             #-Dsonar.verbose= # optional, default is false
           # When you need the analysis to take place in a directory other than the one from which it was launched, default is .
           projectBaseDir: .
+  
+  Snyk:
+    runs-on: ubuntu-latest
+    needs: Sonarqube
+
+    steps:
+      - name: Checkout code
+        uses: actions/chckout@v4
+
+      - name: Install Snyk
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk test
+        run: snyk test --all-projects || true
+
