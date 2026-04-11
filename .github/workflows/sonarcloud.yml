@@ -107,6 +107,6 @@ jobs:
         uses: snyk/actions/setup@master
  
       - name: Snyk Monitor
-        run: snyk monitor --file=backend/package.json
+        run: snyk monitor --all-files
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
